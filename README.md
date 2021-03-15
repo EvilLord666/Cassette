@@ -1,2 +1,2 @@
 # Cassette
-Java study project to work with message queues
+Java study Web (Spring Boot) project to work with message queues
