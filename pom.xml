@@ -41,6 +41,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-maven-plugin</artifactId>
+			<version>4.3.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -55,6 +61,16 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>4.3.3</version>
+				<configuration>
+					<propertyFileWillOverride>true</propertyFileWillOverride>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+					<propertyFile>src/main/resources/db/liquibase.yaml</propertyFile>
 				</configuration>
 			</plugin>
 		</plugins>
