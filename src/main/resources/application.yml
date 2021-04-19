@@ -9,3 +9,5 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 1234
+  jpa:
+    database-platform=org.hibernate.dialect.MySQLDialect
