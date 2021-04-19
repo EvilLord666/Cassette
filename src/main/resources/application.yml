@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: cassette
+  liquibase:
+    enabled: false
+    change-log: classpath:db/changelog/changelog-master.yaml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 1234
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect

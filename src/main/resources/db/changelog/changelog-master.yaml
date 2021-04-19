@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: classpath:db/changelog/changelog-0.1.sql
+#  - include:
+#      file: classpath:/db.changelog/changelog-demodata.yaml
