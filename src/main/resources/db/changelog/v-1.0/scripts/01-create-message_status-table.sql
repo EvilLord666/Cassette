@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS cassette.message_status (
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(128) NOT NULL,
+code INT NOT NULL,
+PRIMARY KEY (id),
+UNIQUE INDEX code_idx (code ASC))
+ENGINE = InnoDB;

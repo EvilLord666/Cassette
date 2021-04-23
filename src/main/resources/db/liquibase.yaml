@@ -1,5 +1,5 @@
-driver: org.postgresql.Driver
-url: jdbc:postgresql://localhost:5432/postgres
-username: postgres
+driver: com.mysql.cj.jdbc.Driver
+url: jdbc:mysql://localhost:3306/cassette
+username: root
 password: 1234
-changeLogFile: src/main/resources/db/changelog/changelog-master.yaml
+changeLogFile: classpath:db/changelog/changelog-master.xml
