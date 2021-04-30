@@ -80,6 +80,7 @@ public class Broker {
     @JoinColumn(name="account_id")
     private AccountEntity Account;
 
+    @Id
     @Column(name = "id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
