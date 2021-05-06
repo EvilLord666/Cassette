@@ -5,85 +5,171 @@ buildscript {
         }
     }
     dependencies {
-        //classpath 'net.ltgt.gradle:gradle-apt-plugin:0.18'
-        //classpath 'org.postgresql:postgresql:42.2.9'
-        //classpath 'org.liquibase.ext:liquibase-hibernate5:3.8'
-        //classpath 'org.liquibase:liquibase-core:3.8.4'
-        //classpath 'org.liquibase:liquibase-gradle-plugin:2.0.2'
-        //classpath 'org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}'
+        classpath 'net.ltgt.gradle:gradle-apt-plugin:0.18'
+        classpath 'org.postgresql:postgresql:42.2.9'
+        classpath 'org.liquibase.ext:liquibase-hibernate5:3.8'
+        classpath 'org.liquibase:liquibase-core:3.8.4'
+        classpath 'org.liquibase:liquibase-gradle-plugin:2.0.2'
+        // classpath 'org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}'
         classpath 'org.springframework.data:spring-data-jpa:2.2.1.RELEASE'
     }
 }
 
 plugins {
+    id 'org.springframework.boot' version '2.2.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'org.liquibase.gradle' version '2.0.2'
     id 'java'
-    id 'org.springframework.boot' version '2.4.4'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'org.liquibase.gradle' version '2.0.4'
 }
+
+group = 'com.goodt.drive'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = '13'
+targetCompatibility = '13'
+compileJava.options.encoding = 'UTF-8'
 
 ext {
-    // set('springCloudVersion', "Hoxton.RC2")
-    set('queryDslVersion', "4.1.3")
-    set('springDocVersion', "1.2.33")
+    set('springCloudVersion', "Hoxton.RC2")
+    set('queryDslVersion',    "4.1.3")
+    set('springDocVersion',   "1.2.33")
 }
-
 if (!project.ext.properties.runList) {
   project.ext.runList = 'main'
 }
 
-group = 'com.github'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '13'
-
-/*configurations {
+configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
-}*/
+}
 
 repositories {
     mavenCentral()
     maven { url 'https://repo.spring.io/milestone' }
 }
 
+//bootRun.dependsOn update
+diff.dependsOn compileJava
+diffChangeLog.dependsOn compileJava
+generateChangelog.dependsOn compileJava
+
 dependencies {
     // spring boot
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    //implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    //implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    //implementation 'org.springframework.boot:spring-boot-starter-security'
-    //implementation 'org.springframework.boot:spring-boot-starter-cache'
-    //implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure'
-    //implementation 'org.springframework.security:spring-security-oauth2-client'
-    //implementation 'org.projectreactor:reactor-spring:1.0.1.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure'
+    implementation 'org.springframework.security:spring-security-oauth2-client'
+    implementation 'org.projectreactor:reactor-spring:1.0.1.RELEASE'
+
+    // spring cloud
+    //implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    //implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     
     // JAX-B dependencies for JDK 9+
     implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
     implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
     implementation 'com.darylteo.gradle:javassist-plugin:0.4.1'
     
+    // other
+    //compile 'org.postgresql:postgresql:42.2.1'
+    //compile 'com.h2database:h2'
+    //compile 'org.hibernate:hibernate-core:5.4.10.Final'
+    //compileOnly 'org.projectlombok:lombok'
+    //
+    runtime 'javax.xml.bind:jaxb-api'
+    compile 'org.liquibase:liquibase-core'
+    //runtime 'org.liquibase:liquibase-core'
+    liquibaseRuntime 'org.liquibase:liquibase-core:3.8.1'
+    liquibaseRuntime "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
+    liquibaseRuntime 'org.springframework.boot:spring-boot:2.2.1.RELEASE'
+    //liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:2.0.1'
+    liquibaseRuntime 'org.postgresql:postgresql:42.2.9'
+    liquibaseRuntime 'org.springframework.data:spring-data-jpa:2.2.1.RELEASE'
+    liquibaseRuntime 'org.hibernate:hibernate-core:5.4.10.Final'
+    liquibaseRuntime 'org.liquibase.ext:liquibase-hibernate5:3.8'
+    liquibaseRuntime 'ch.qos.logback:logback-core:1.2.3'
+    liquibaseRuntime 'ch.qos.logback:logback-classic:1.2.3'
+    liquibaseRuntime sourceSets.main.output  
+
     // TESTS
-    /*testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("org.junit.jupiter:junit-jupiter-engine:5.2.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
-        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
-    }*/
-    // QueryDsl
-    //compile "com.querydsl:querydsl-core:${queryDslVersion}"
-    //compile "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
 
-    // Swagger
-    //compile "org.springdoc:springdoc-openapi-ui:${springDocVersion}"
-    //compile "org.springdoc:springdoc-openapi-webmvc-core:${springDocVersion}"
+    // QueryDsl
+    compile "com.querydsl:querydsl-core:${queryDslVersion}"
+    compile "com.querydsl:querydsl-jpa:${queryDslVersion}"
+
+    compile "org.springdoc:springdoc-openapi-ui:${springDocVersion}"
+    compile "org.springdoc:springdoc-openapi-webmvc-core:${springDocVersion}"
+
+    compile "org.mybatis:mybatis:3.5.4"
+    
+    annotationProcessor (
+        "org.projectlombok:lombok",
+        "com.querydsl:querydsl-apt:${queryDslVersion}:jpa",
+        "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final",
+        "javax.annotation:javax.annotation-api:1.3.2"
+    )
 }
 
-/*test {
-    useJUnitPlatform()
-}*/
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
 
+//def generatedChangeLog = "$projectDir/src/main/resources/db/changelog/newChangelog.xml"
+//def changeLog = "$projectDir/src/main/resources/db/changelog/changelog.xml"
+def outputLog = "$projectDir/diffOutputLog.txt"
+
+liquibase {
+    activities {
+        main {
+            changeLogFile "$projectDir/src/main/resources/db/changelog/changelog.xml"
+            outputFile outputLog
+            driver "org.postgresql.Driver"
+            url "jdbc:postgresql://localhost:5432/competence"
+            username "developer"
+            password "123"
+            referenceUrl "hibernate:spring:com.goodt.drive.competence.application.model.entities?dialect=org.hibernate.dialect.PostgreSQL94Dialect&hibernate.physical_naming_strategy=com.goodt.drive.competence.application.utils.SnakePhysicalNamingStrategy"
+            referenceDriver 'liquibase.ext.hibernate.database.connection.HibernateDriver'
+        }
+        changesGen {
+            changeLogFile "$projectDir/src/main/resources/db/changelog/newChangelog.xml"
+            outputFile outputLog
+            driver "org.postgresql.Driver"
+            url "jdbc:postgresql://localhost:5432/competence"
+            username "developer"
+            password "123"
+            referenceUrl "hibernate:spring:com.goodt.drive.competence.application.model.entities?dialect=org.hibernate.dialect.PostgreSQL94Dialect&hibernate.physical_naming_strategy=com.goodt.drive.competence.application.utils.SnakePhysicalNamingStrategy"
+            referenceDriver 'liquibase.ext.hibernate.database.connection.HibernateDriver'
+        }
+        // changesApply is used for Apply Migrations on Database
+        changesApply {
+            changeLogFile "$projectDir/src/main/resources/db/changelog/changelog.xml"
+            outputFile outputLog
+            driver "org.postgresql.Driver"
+            url "jdbc:postgresql://localhost:5432/competence"
+            username "developer"
+            password "123"
+            referenceUrl "hibernate:spring:com.goodt.drive.competence.application.model.entities?dialect=org.hibernate.dialect.PostgreSQL94Dialect&hibernate.physical_naming_strategy=com.goodt.drive.competence.application.utils.SnakePhysicalNamingStrategy"
+            referenceDriver 'liquibase.ext.hibernate.database.connection.HibernateDriver'
+        }
+    }
+    runList = project.ext.runList
+}
 bootJar {
-    mainClassName = 'com.github.Cassette.Application'
+    mainClassName = 'com.github.cassette.Application'
+}
+
+test {
+    useJUnitPlatform()
 }

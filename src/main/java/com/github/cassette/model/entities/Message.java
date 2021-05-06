@@ -22,7 +22,7 @@ public class Message {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "broker_id", nullable = false)
-    private BrokerEntity broker;
+    private Broker broker;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "message_status_id")
