@@ -1,24 +1,17 @@
-package com.github.cassette.model.entities;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+package com.github.cassette.application.model.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "broker")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Broker {
+public class BrokerEntity {
 
-    public Broker() {
+    public BrokerEntity() {
 
     }
 
-    public Broker(Long Id, String Name, String Adress, String Description, BrokerTypeEntity BrokerType, AccountEntity Account) {
+    public BrokerEntity(Long Id, String Name, String Adress, String Description, BrokerTypeEntity BrokerType, AccountEntity Account) {
         this.Id = Id;
         this.Name = Name;
         this.Adress = Adress;
@@ -39,7 +32,7 @@ public class Broker {
         return Name;
     }
 
-    public void setName(Long Name) {
+    public void setName(String Name) {
         this.Name = Name;
     }
     public String getAdress() {
@@ -47,7 +40,7 @@ public class Broker {
     }
 
     public void setAdress(String Adress) {
-        this.Id = Adress;
+        this.Adress = Adress;
     }
     public String getDescription() {
         return Description;
