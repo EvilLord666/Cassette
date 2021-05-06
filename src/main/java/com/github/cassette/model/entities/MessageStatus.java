@@ -1,17 +1,10 @@
-package com.github.cassette.application.model.entities;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+package com.github.cassette.model.entities;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "message_status")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class MessageStatusEntity {
+public class MessageStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

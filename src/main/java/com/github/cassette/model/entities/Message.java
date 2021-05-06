@@ -1,18 +1,11 @@
-package com.github.cassette.application.model.entities;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+package com.github.cassette.model.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "message")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class MessageEntity {
+public class Message {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,5 +26,5 @@ public class MessageEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "message_status_id")
-    private MessageStatusEntity messageStatus;
+    private MessageStatus messageStatus;
 }
