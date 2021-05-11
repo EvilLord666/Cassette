@@ -5,7 +5,10 @@
  */
 package com.github.cassette.model.entities;
 
+import javax.persistence.*;
 
-public class BrokerEntity {
+@Entity
+@Table(name = "message_status")
+public class BrokerEntity extends BaseEntity {
     
 }

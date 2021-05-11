@@ -5,15 +5,26 @@
  */
 package com.github.cassette.model.entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
-public class BaseEntity {
+@MappedSuperclass
+public abstract class BaseEntity {
+    
+    public BaseEntity() {
+        
+    }
+    
+     public BaseEntity(Long id) {
+        this.id = id;
+    }
+     
+    public Long getId() {
+        return this.id;
+    }
+    
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 }
