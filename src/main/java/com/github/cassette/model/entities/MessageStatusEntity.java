@@ -3,7 +3,7 @@ package com.github.cassette.model.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "message_status")
+@Table(name = "MessageStatus")
 public class MessageStatusEntity extends BaseEntity {
 
     public MessageStatusEntity() {

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "message")
+@Table(name = "Message")
 public class MessageEntity extends BaseEntity {
     
     public MessageEntity() {
@@ -35,10 +35,30 @@ public class MessageEntity extends BaseEntity {
         this.sendTime = sendTime;
     }
     
+    public String getTopic(String topic) {
+        return this.topic;
+    }
+    
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+    
     public BrokerEntity getBroker() {
         return this.broker;
     }
     
+    public void setBroker(BrokerEntity broker) {
+        this.broker = broker;
+    }
+    
+    
+    public MessageStatusEntity getMessageStatus() {
+        return this.messageStatus;
+    }
+    
+    public void setMessageStatus(MessageStatusEntity messageStatus) {
+        this.messageStatus = messageStatus;
+    }
 
     @Column(name = "message_body_path", nullable = false, length = 300)
     private String messageBodyPath;
