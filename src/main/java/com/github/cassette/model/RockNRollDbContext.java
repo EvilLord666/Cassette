@@ -1,7 +1,6 @@
 package com.github.cassette.model;
 
-import com.github.cassette.model.repositories.IMessageRepository;
-import com.github.cassette.model.repositories.IMessageStatusRepository;
+import com.github.cassette.model.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -12,16 +11,37 @@ public class RockNRollDbContext implements IDbContext {
 
     @Override
     public IMessageRepository getMessageDataSource() {
-        return iMessageRepository;
+        return this.messageRepo;
     }
 
     @Override
     public IMessageStatusRepository getMessageStatusDataSource() {
-        return iMessageStatusRepository;
+        return this.messageStatusRepo;
+    }
+    
+    @Override
+    public IAccountRepository getAccountDataSource() {
+        return this.accountRepo;
+    }
+
+    @Override
+    public IBrokerTypeRepository getBrokerTypeDataSource() {
+        return this.brokerTypeRepo;
+    }
+
+    @Override
+    public IBrokerRepository getBrokerDataSource() {
+        return this.brokerRepo;
     }
     
     @Autowired
-    private IMessageRepository iMessageRepository;
+    private IAccountRepository accountRepo;
     @Autowired
-    private IMessageStatusRepository iMessageStatusRepository;
+    private IBrokerTypeRepository brokerTypeRepo;
+    @Autowired
+    private IBrokerRepository brokerRepo;
+    @Autowired
+    private IMessageRepository messageRepo;
+    @Autowired
+    private IMessageStatusRepository messageStatusRepo;
 }
