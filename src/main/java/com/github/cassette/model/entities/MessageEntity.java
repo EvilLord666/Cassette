@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "message")
-public class Message {
+public class MessageEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,9 @@ public class Message {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "broker_id", nullable = false)
-    private Broker broker;
+    private BrokerEntity broker;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "message_status_id")
-    private MessageStatus messageStatus;
+    private MessageStatusEntity messageStatus;
 }

@@ -6,6 +6,6 @@
 package com.github.cassette.model.entities;
 
 
-public class Broker {
+public class BrokerEntity {
     
 }

@@ -65,7 +65,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure'
     implementation 'org.springframework.security:spring-security-oauth2-client'
-    implementation 'org.projectreactor:reactor-spring:1.0.1.RELEASE'
+    // implementation 'org.projectreactor:reactor-spring:1.0.1.RELEASE'
 
     // spring cloud
     //implementation 'org.springframework.cloud:spring-cloud-starter-config'
