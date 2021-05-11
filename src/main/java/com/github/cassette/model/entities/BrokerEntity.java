@@ -29,7 +29,8 @@ public class BrokerEntity extends BaseEntity {
     public void setName(String name) {
         this.name = name;
     }
-    public String getAdress() {
+    
+    public String getAddress() {
         return this.address;
     }
 
@@ -44,6 +45,7 @@ public class BrokerEntity extends BaseEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+    
     public BrokerTypeEntity BrokerType() {
         return this.brokerType;
     }
