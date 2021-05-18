@@ -1,5 +1,5 @@
 spring:
-  profiles: functests
+  profiles: production
   jpa:
     show-sql: true
     properties:
@@ -10,7 +10,8 @@ spring:
       ddl-auto: none
     database-platform:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    database-name: postgres
+    url: jdbc:postgresql://localhost:5432/${spring.datasource.database-name}
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 1234
@@ -18,3 +19,9 @@ spring:
       database-platform: org.hibernate.dialect.MySQLDialect
   liquibase:
     change-log: classpath:db/changelog/changelog-master.yml
+
+appConfig:
+  environment: ${spring.profiles}
+  dbDriver: ${spring.datasource.driver-class-name}
+  dbUrl: ${spring.datasource.url}
+  dbName: ${spring.datasource.database-name}

@@ -5,3 +5,5 @@ spring:
     change-log: classpath:db/changelog/changelog-master.yml
 #  TODO need to configure the Liquibase
     enabled: false
+  profiles:
+    active: local
