@@ -177,7 +177,7 @@ liquibase {
 
 // ####################################################################################
 bootJar {
-    mainClassName = 'com.github.cassette.Application'
+    mainClassName = 'com.github.cassette.CassetteApplication'
 }
 
 test {
