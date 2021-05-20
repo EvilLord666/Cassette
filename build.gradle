@@ -80,6 +80,8 @@ dependencies {
     compile 'org.postgresql:postgresql:42.2.1'
     compile 'com.h2database:h2'
     compile 'org.hibernate:hibernate-core:5.4.10.Final'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+
     //compileOnly 'org.projectlombok:lombok'
     //
     runtime 'javax.xml.bind:jaxb-api'

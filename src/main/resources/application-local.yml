@@ -10,10 +10,10 @@ spring:
       ddl-auto: none
     database-platform:
   datasource:
-    database-name: postgres
-    url: jdbc:postgresql://localhost:5432/${spring.datasource.database-name}
-    driver-class-name: org.postgresql.Driver
-    username: postgres
+    database-name: cassette
+    url: jdbc:mysql://localhost:3306/${spring.datasource.database-name}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
     password: 1234
     jpa:
       database-platform: org.hibernate.dialect.MySQLDialect
