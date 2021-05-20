@@ -1,21 +1,18 @@
 package com.github.cassette.controllers.api;
 
 
-import com.github.cassette.configuration.ApplicationConfig;
+import com.github.cassette.configuration.BaseController;
 import com.github.cassette.dto.ApplicationInfoDto;
 import com.github.cassette.factories.ApplicationInfoFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class InfoController {
+public class InfoController extends BaseController {
 
     @GetMapping("/api/info")
     public ApplicationInfoDto get(){
-        return ApplicationInfoFactory.create(applicationConfig);
+        return ApplicationInfoFactory.create(getAppConfig());
     }
 
-    @Autowired
-    private ApplicationConfig applicationConfig;
 }

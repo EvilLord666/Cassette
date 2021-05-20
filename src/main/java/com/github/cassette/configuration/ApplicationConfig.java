@@ -17,7 +17,7 @@ public class ApplicationConfig {
     }
 
     public String getEnvironment() {
-        return environment;
+        return this.environment;
     }
 
     public void setEnvironment(String environment) {
@@ -25,7 +25,7 @@ public class ApplicationConfig {
     }
 
     public String getDbDriver() {
-        return dbDriver;
+        return this.dbDriver;
     }
 
     public void setDbDriver(String dbDriver) {
@@ -33,7 +33,7 @@ public class ApplicationConfig {
     }
 
     public String getDbUrl() {
-        return dbUrl;
+        return this.dbUrl;
     }
 
     public void setDbUrl(String dbUrl) {
@@ -41,7 +41,7 @@ public class ApplicationConfig {
     }
 
     public String getDbName() {
-        return dbName;
+        return this.dbName;
     }
 
     public void setDbName(String dbName) {

@@ -1,7 +1,5 @@
 package com.github.cassette.dto;
 
-import org.springframework.core.env.Environment;
-
 public class ApplicationInfoDto {
 
     public ApplicationInfoDto() {
@@ -15,7 +13,7 @@ public class ApplicationInfoDto {
     }
 
     public String getEnvironment() {
-        return environment;
+        return this.environment;
     }
 
     public void setEnvironment(String environment) {
@@ -23,7 +21,7 @@ public class ApplicationInfoDto {
     }
 
     public String getDbDriver() {
-        return dbDriver;
+        return this.dbDriver;
     }
 
     public void setDbDriver(String dbDriver) {
@@ -31,7 +29,7 @@ public class ApplicationInfoDto {
     }
 
     public String getDbUrl() {
-        return dbUrl;
+        return this.dbUrl;
     }
 
     public void setDbUrl(String dbUrl) {
@@ -39,7 +37,7 @@ public class ApplicationInfoDto {
     }
 
     public String getBdName() {
-        return bdName;
+        return this.bdName;
     }
 
     public void setBdName(String bdName) {
