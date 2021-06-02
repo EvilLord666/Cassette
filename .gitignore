@@ -1,5 +1,7 @@
 HELP.md
 .gradle
+.mvn
+gradle
 build/
 !../../../Goodt_study/Cassette/gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
