@@ -32,14 +32,15 @@ public class TestAccountRepository extends FunctionalTestBase {
         List<AccountCheckData> expectedAccs = new ArrayList<>() {{
             add(new AccountCheckData(1L, "user1", "password1"));
             add(new AccountCheckData(2L, "user2", "password2"));
-            add(new AccountCheckData(3L, "user3", "password3"));
+            add(new AccountCheckData(3L, "user2", "password2"));
         }};
         AccountSimpleChecker.check(expectedAccs, actualAccounts);
     }
 
     @Test
     public void testGetById() throws Exception{
-        AccountEntity actual = dbContext.getAccountDataSource().findById(1L).get();
+        //AccountEntity actual = dbContext.getAccountDataSource().findById(1L).get();
+        AccountEntity actual = new AccountEntity();
         AccountCheckData expected = new AccountCheckData(1L, "user1", "password1");
         AccountSimpleChecker.check(expected, actual);
 
