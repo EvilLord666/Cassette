@@ -1,8 +1,8 @@
 -- -----------------------------------------------------
 -- Schema cassette
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `cassette` DEFAULT CHARACTER SET utf8 ;
-USE `cassette` ;
+--CREATE SCHEMA IF NOT EXISTS `cassette` DEFAULT CHARACTER SET utf8 ;
+--USE `cassette` ;
 
 -- -----------------------------------------------------
 -- Table `cassette`.`broker_type`
@@ -85,4 +85,3 @@ REFERENCES `cassette`.`message_status` (`id`)
 ON DELETE SET NULL
 ON UPDATE CASCADE)
 ENGINE = InnoDB;
-

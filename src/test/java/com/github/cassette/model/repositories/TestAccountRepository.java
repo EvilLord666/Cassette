@@ -23,12 +23,7 @@ public class TestAccountRepository extends FunctionalTestBase {
 
     @Test
     public void testGetAll() throws Exception{
-        Iterable<AccountEntity> accountIterable = dbContext.getAccountDataSource().findAll();
-        Iterator<AccountEntity> it = accountIterable.iterator();
-        List<AccountEntity> actualAccounts = new ArrayList<>();
-        while (it.hasNext()) {
-            actualAccounts.add(it.next());
-        }
+        List<AccountEntity> actualAccounts = dbContext.getAccountDataSource().findAll();
         List<AccountCheckData> expectedAccs = new ArrayList<>() {{
             add(new AccountCheckData(1L, "user1", "password1"));
             add(new AccountCheckData(2L, "user2", "password2"));
@@ -39,8 +34,7 @@ public class TestAccountRepository extends FunctionalTestBase {
 
     @Test
     public void testGetById() throws Exception{
-        AccountEntity actual = dbContext.getAccountDataSource().findById(1L).get();
-        //AccountEntity actual = new AccountEntity();
+        AccountEntity actual = dbContext.getAccountDataSource().findById(1L).orElseThrow();
         AccountCheckData expected = new AccountCheckData(1L, "user1", "password1");
         AccountSimpleChecker.check(expected, actual);
 
