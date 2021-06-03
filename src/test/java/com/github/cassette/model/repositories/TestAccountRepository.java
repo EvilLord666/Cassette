@@ -39,8 +39,8 @@ public class TestAccountRepository extends FunctionalTestBase {
 
     @Test
     public void testGetById() throws Exception{
-        //AccountEntity actual = dbContext.getAccountDataSource().findById(1L).get();
-        AccountEntity actual = new AccountEntity();
+        AccountEntity actual = dbContext.getAccountDataSource().findById(1L).get();
+        //AccountEntity actual = new AccountEntity();
         AccountCheckData expected = new AccountCheckData(1L, "user1", "password1");
         AccountSimpleChecker.check(expected, actual);
 

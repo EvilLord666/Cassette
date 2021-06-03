@@ -2,8 +2,17 @@ spring:
   application:
     name: cassette
   liquibase:
-    change-log: classpath:db/changelog/changelog-master.yml
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.xml
 #  TODO need to configure the Liquibase
-    enabled: false
   profiles:
     active: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/cassette
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+  hibernate:
+    ddl-auto: none

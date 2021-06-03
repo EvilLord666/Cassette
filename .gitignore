@@ -1,5 +1,6 @@
 HELP.md
 .gradle
+.DS_Store
 build/
 !../../../Goodt_study/Cassette/gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
