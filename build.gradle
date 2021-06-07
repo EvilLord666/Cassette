@@ -119,7 +119,7 @@ dependencies {
     compile "org.springdoc:springdoc-openapi-webmvc-core:${springDocVersion}"
 
     // ScriptRun
-    compile "org.mybatis:mybatis:3.5.4"
+    compile "org.mybatis:mybatis:3.5.7"
 
     annotationProcessor (
         //"org.projectlombok:lombok",

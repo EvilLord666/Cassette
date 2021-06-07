@@ -11,7 +11,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,14 +20,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 @ActiveProfiles("functests")
-@RunWith(SpringRunner.class)
 public class TestAccountRepository extends FunctionalTestBase {
 
     @Test
     public void testGetAll() throws Exception{
         List<AccountEntity> actualAccounts = dbContext.getAccountDataSource().findAll();
-        //System.out.println("begin");
-        //System.out.println(new BufferedReader(new FileReader("src/main/resources/data/db_test_data.sql")));
         List<AccountCheckData> expectedAccs = new ArrayList<>() {{
             add(new AccountCheckData(1L, "user1", "password1"));
             add(new AccountCheckData(2L, "user2", "password2"));

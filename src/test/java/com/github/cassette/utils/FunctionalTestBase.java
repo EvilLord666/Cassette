@@ -8,12 +8,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.test.context.ActiveProfiles;
 
+
 @ActiveProfiles("functests")
 public class FunctionalTestBase extends DatabaseRelatedTestBase {
     @BeforeEach
     public void setUp() throws DatabaseException, LiquibaseException, SQLException, FileNotFoundException{
-        setUp("jdbc:mysql://localhost:3306/${spring.datasource.database-name}", "root", "1234",
-            "src/main/resources/db/changelog/changelog-master.xml", "src/main/resources/data/db_test_data.sql");
+        setUp("jdbc:mysql://localhost:3306/cassette", "root", "1234",
+            "src/main/resources/data/db_test_data.sql");
     }
 
     @AfterEach

@@ -41,6 +41,7 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
                  splitStatements="true"
                  stripComments="true"
                  path="scripts/01-create-message-table.sql"/>
+
     </changeSet>
 
 </databaseChangeLog>

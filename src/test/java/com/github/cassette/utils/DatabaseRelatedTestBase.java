@@ -18,14 +18,11 @@ import liquibase.resource.ClassLoaderResourceAccessor;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
 public class DatabaseRelatedTestBase {
-    public void setUp(String url, String user, String password, String changelogFile, String initScript) throws SQLException, DatabaseException, LiquibaseException, FileNotFoundException {
+    public void setUp(String url, String user, String password, String initScript) throws SQLException, DatabaseException, LiquibaseException, FileNotFoundException {
         conn = DriverManager.getConnection(url, user, password);
         db = DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(conn));
-        liquibase = new liquibase.Liquibase(changelogFile, new ClassLoaderResourceAccessor(), db);
-        liquibase.update(new Contexts(), new LabelExpression());
         ScriptRunner runner = new ScriptRunner(conn);
         runner.runScript(new BufferedReader(new FileReader(initScript)));
-
     }
 
     public void tearDown() throws SQLException{
