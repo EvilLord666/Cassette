@@ -4,7 +4,7 @@ import com.github.cassette.model.repositories.*;
 
 public interface IDbContext {
 
-    public IAccountRepository getAccountDataSource();
+    IAccountRepository getAccountDataSource();
 
     IBrokerTypeRepository getBrokerTypeDataSource();
 

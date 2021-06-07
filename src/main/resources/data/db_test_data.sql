@@ -1,4 +1,7 @@
-TRUNCATE TABLE account CASCADE;
-INSERT INTO account (id, username, password_hash) VALUES (1, 'user1', 'password1');
-INSERT INTO account (id, username, password_hash) VALUES (2, 'user2', 'password2');
-INSERT INTO account (id, username, password_hash) VALUES (3, 'user3', 'password3');
+delete from account;
+
+insert into account (id, username, password_hash) values (1, 'user1', 'password1');
+insert into account (id, username, password_hash) values (2, 'user2', 'password2');
+insert into account (id, username, password_hash) values (3, 'user3', 'password3');
+
+
