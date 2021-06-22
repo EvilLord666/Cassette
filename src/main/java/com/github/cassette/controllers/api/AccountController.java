@@ -27,7 +27,7 @@ public class AccountController extends BaseController {
     }
 
     @GetMapping("api/account")
-    public List<AccountDto> getAllAccountDtos() {
+    public List<AccountDto> getAllAccountDto() {
         return getDbContext().getAccountDataSource().findAll().stream().map(accountEntity -> AccountFactory.create(accountEntity))
                 .collect(Collectors.toList());
     }
