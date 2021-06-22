@@ -1,7 +1,6 @@
 package com.github.cassette.controllers.api;
 
 
-import com.github.cassette.configuration.BaseController;
 import com.github.cassette.dto.ApplicationInfoDto;
 import com.github.cassette.factories.ApplicationInfoFactory;
 import org.springframework.web.bind.annotation.GetMapping;
