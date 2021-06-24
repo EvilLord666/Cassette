@@ -1,16 +1,16 @@
 package com.github.cassette.model.repositories;
 
 import com.github.cassette.model.IDbContext;
-import com.github.cassette.model.RockNRollDbContext;
 import com.github.cassette.model.entities.AccountEntity;
 import com.github.cassette.utils.data.AccountCheckData;
 import com.github.cassette.utils.checker.AccountSimpleChecker;
 import com.github.cassette.utils.FunctionalTestBase;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +43,36 @@ public class TestAccountRepository extends FunctionalTestBase {
         expected = new AccountCheckData(3L, "user3", "password3");
         AccountSimpleChecker.check(expected, actual);
    }
+
+   @Test
+   public void testCreateAccount() throws Exception{
+        AccountEntity entity = new AccountEntity("user23", "pass12");
+        entity = dbContext.getAccountDataSource().save(entity);
+        Assert.assertNotNull(entity);
+   }
+
+   @Test
+   public void testUpdateAccount() throws Exception{
+       AccountEntity entity = dbContext.getAccountDataSource().findById(3L).orElseThrow();
+       entity.setUserName("abrakadabra");
+       entity = dbContext.getAccountDataSource().save(entity);
+       AccountCheckData expected = new AccountCheckData(3L, "abrakadabra", "password3");
+       AccountEntity testEntity = dbContext.getAccountDataSource().findById(3L).orElseThrow();
+       AccountSimpleChecker.check(expected, testEntity);
+   }
+   @Test
+   public void testDeleteAccount() throws Exception{
+       AccountEntity entity = dbContext.getAccountDataSource().findById(3L).orElseThrow();
+       dbContext.getAccountDataSource().delete(entity);
+       Optional<AccountEntity> testAccount = dbContext.getAccountDataSource().findById(3L);
+       if (testAccount.isEmpty()){
+           Assert.assertNull(null);
+       }
+       else{
+           Assert.assertNull(1);
+       }
+   }
+
 
     @Autowired
     IDbContext dbContext;
