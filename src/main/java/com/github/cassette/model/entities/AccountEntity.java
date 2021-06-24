@@ -41,6 +41,6 @@ public class AccountEntity extends BaseEntity {
     @Column(name = "username", nullable = false, length = 256, unique = true)
     private String userName;
     
-    @Column(name = "password", nullable = false, length = 4096, unique = false)
+    @Column(name = "password_hash", nullable = false, length = 4096, unique = false)
     private String passwordHash;
 }

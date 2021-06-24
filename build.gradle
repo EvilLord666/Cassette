@@ -70,22 +70,24 @@ dependencies {
     // spring cloud
     //implementation 'org.springframework.cloud:spring-cloud-starter-config'
     //implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    
+
     // JAX-B dependencies for JDK 9+
     implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
     implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
     implementation 'com.darylteo.gradle:javassist-plugin:0.4.1'
-    
+
     // other
     compile 'org.postgresql:postgresql:42.2.1'
+    runtimeOnly 'mysql:mysql-connector-java'
     compile 'com.h2database:h2'
     compile 'org.hibernate:hibernate-core:5.4.10.Final'
+    implementation group: 'org.liquibase', name:'liquibase-core', version: '4.3.1'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
 
     //compileOnly 'org.projectlombok:lombok'
     //
     runtime 'javax.xml.bind:jaxb-api'
-    
+
     compile 'org.liquibase:liquibase-core'
     /*
     //runtime 'org.liquibase:liquibase-core'
@@ -116,9 +118,9 @@ dependencies {
     compile "org.springdoc:springdoc-openapi-ui:${springDocVersion}"
     compile "org.springdoc:springdoc-openapi-webmvc-core:${springDocVersion}"
 
-    // ???
-    //compile "org.mybatis:mybatis:3.5.4"
-    
+    // ScriptRun
+    compile "org.mybatis:mybatis:3.5.7"
+
     annotationProcessor (
         //"org.projectlombok:lombok",
         "com.querydsl:querydsl-apt:${queryDslVersion}:jpa",

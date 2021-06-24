@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS cassette.broker_type (
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(128) NOT NULL,
+description VARCHAR(255) NULL,
+PRIMARY KEY (id))
+ENGINE = InnoDB;

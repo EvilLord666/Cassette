@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
-@Scope("request")
+//@Scope("request")
 public class RockNRollDbContext implements IDbContext {
 
     @Override

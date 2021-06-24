@@ -18,7 +18,7 @@ spring:
     jpa:
       database-platform: org.hibernate.dialect.MySQLDialect
   liquibase:
-    change-log: classpath:db/changelog/changelog-master.yml
+    change-log: classpath:db/changelog/changelog-master.xml
 
 appConfig:
   environment: ${spring.profiles}

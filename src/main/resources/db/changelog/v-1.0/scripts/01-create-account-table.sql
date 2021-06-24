@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS cassette.account (
+id INT NOT NULL AUTO_INCREMENT,
+username VARCHAR(256) NOT NULL,
+password_hash VARCHAR(512) NOT NULL,
+PRIMARY KEY (id))
+ENGINE = InnoDB;
+
